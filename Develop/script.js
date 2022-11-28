@@ -64,14 +64,14 @@ function writePassword(length) {
 // figure out how to store a variable length group of numbers. 
   var specialCharacters = confirm("Do you want to include special characters?")
   if (specialCharacters == true) {
-    console.log(String.fromCharCode(getSpecialCharacter()))
+    //console.log(String.fromCharCode(getSpecialCharacter()))
   }
   
   
 
   var capitalLetters = confirm("Do you want to include capital letters?")
   if (capitalLetters == true) {
-    console.log(String.fromCharCode(getCapitalLetter()))
+    //console.log(String.fromCharCode(getCapitalLetter()))
   } else {
 
   }
@@ -79,20 +79,63 @@ function writePassword(length) {
 
   var lowercaseLetters = confirm ("Do you want to include lowercase letters?")
   if (lowercaseLetters == true) {
-    console.log(String.fromCharCode(getLowercase()))
+    //console.log(String.fromCharCode(getLowercase()))
   }
   
 
   var includeNumbers = confirm ("Do you want to include numbers?")
   if (includeNumbers == true) {
-    console.log(String.fromCharCode(getNumbers()))
+    //console.log(String.fromCharCode(getNumbers()))
   }
   
   document.getElementById("password").innerHTML="hi there"
 
-  for (var i=0; i <= lengthOfPassword; i++)
-
+  var restart = true ;
+  var stored = "";
   
+
+
+  for (i = 0; i <= lengthOfPassword; i++ ) {
+while (restart == true) { 
+    //This is the code that I need to run repeatedly. Generate one of the four numbers however many times. Generation needs to be inside of for loop. 
+    var selector = getRandomInt(4) 
+    console.log(selector)
+    if (selector == 0) {
+      if (lowercaseLetters == true) {
+        stored = stored + String.fromCharCode(getLowercase())
+        restart = false;
+        console.log(0)
+      }
+    }
+    
+    if (selector == 1) {
+      if (capitalLetters == true) {
+        stored = stored + String.fromCharCode(getCapitalLetter())
+        restart = false;
+        console.log(1)
+      }
+    }
+    if (selector == 2) { 
+      if (specialCharacters == true) {
+        stored = stored + String.fromCharCode(getSpecialCharacter())
+        restart = false;
+        console.log(2)
+      }
+    }
+
+    if (selector == 3) {
+      if (includeNumbers == true) {
+        stored = stored + String.fromCharCode(getNumbers())
+        restart = false; 
+        console.log(3)
+      }
+    }
+  }
+  }
+  
+
+
+
   if (startAgain) {
     writePassword()
   }
