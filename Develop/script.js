@@ -36,103 +36,86 @@ function getSpecialCharacter () {
 // Get references to the #generate element
 var generateBtn = document.querySelector("#generate");
 
-
+// Setting all the variables 
 var capitals = [true, false]
 var lowercase = [true, false]
 var special = [true, false]
-var passwordGenerated = undefined
+var numbers = [true, false]
+var passwordGenerated = ''
 var startAgain = false
-// var stats = {
-  //capitals : true,
-  //lowercase : true,
-  //special : true, 
-  //length : true, 
-//}
+var general = [0, 1, 2, 3]
+
 
 // Write password to the #password input
 function writePassword(length) {
   var lengthOfPassword = prompt("How long do you want your password to be?")
-  if (lengthOfPassword > 7 && lengthOfPassword < 129 ) {
-    console.log(lengthOfPassword);
-  } else {
+  if (lengthOfPassword < 8 && lengthOfPassword > 128 ) {
     alert("Length of password must be between 8 and 128 characters!")
     return;
-  }
+  } 
   
 
-// to do: Add error checking to make sure at least one of these is yes. 
-// figure out how to store a variable length group of numbers. 
+ 
   var specialCharacters = confirm("Do you want to include special characters?")
-  if (specialCharacters == true) {
-    //console.log(String.fromCharCode(getSpecialCharacter()))
-  }
   
-  
-
   var capitalLetters = confirm("Do you want to include capital letters?")
-  if (capitalLetters == true) {
-    //console.log(String.fromCharCode(getCapitalLetter()))
-  } else {
-
-  }
-  
-
+ 
   var lowercaseLetters = confirm ("Do you want to include lowercase letters?")
-  if (lowercaseLetters == true) {
-    //console.log(String.fromCharCode(getLowercase()))
-  }
-  
 
   var includeNumbers = confirm ("Do you want to include numbers?")
-  if (includeNumbers == true) {
-    //console.log(String.fromCharCode(getNumbers()))
-  }
+
   
-  document.getElementById("password").innerHTML="hi there"
 
   var restart = true ;
   var stored = "";
-  
+  if (includeNumbers === false && lowercaseLetters === false && capitalLetters === false && specialCharacters === false) {
+    alert ("Need to select at least 1!")
+    return ;
+  }
 
 
-  for (i = 0; i <= lengthOfPassword; i++ ) {
+  for (i = 0; i < lengthOfPassword; i++ ) {
+   restart = true ; 
 while (restart == true) { 
     //This is the code that I need to run repeatedly. Generate one of the four numbers however many times. Generation needs to be inside of for loop. 
     var selector = getRandomInt(4) 
-    console.log(selector)
-    if (selector == 0) {
-      if (lowercaseLetters == true) {
+    if (selector === 0) {
+      if (lowercaseLetters === true) {
         stored = stored + String.fromCharCode(getLowercase())
         restart = false;
-        console.log(0)
       }
     }
     
-    if (selector == 1) {
-      if (capitalLetters == true) {
+    else if (selector === 1) {
+      if (capitalLetters === true) {
         stored = stored + String.fromCharCode(getCapitalLetter())
         restart = false;
-        console.log(1)
-      }
-    }
-    if (selector == 2) { 
-      if (specialCharacters == true) {
-        stored = stored + String.fromCharCode(getSpecialCharacter())
-        restart = false;
-        console.log(2)
       }
     }
 
-    if (selector == 3) {
-      if (includeNumbers == true) {
-        stored = stored + String.fromCharCode(getNumbers())
-        restart = false; 
-        console.log(3)
+    else if (selector === 2) { 
+      if (specialCharacters === true) {
+        stored = stored + String.fromCharCode(getSpecialCharacter())
+        restart = false;
       }
     }
+
+    else if (selector === 3) {
+      if (includeNumbers === true) {
+        stored = stored + String.fromCharCode(getNumbers())
+        restart = false; 
+      }
+    }
+
+    else {
+      alert ("Must select one!") ; 
+      return ; 
+    }
   }
+  // checking to see if stored is the correct generated password. 
+  console.log(stored)
   }
-  
+  document.getElementById("password").innerHTML=stored
 
 
 
