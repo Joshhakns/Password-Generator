@@ -13,4 +13,7 @@
 ## N/A
 
 # Screenshots/ Links
-## will add when website is live. 
+## Link to deployed Website ttps://joshhakns.github.io/Password-Generator/
+## ![image](https://user-images.githubusercontent.com/115948325/204409766-64fa45aa-1893-4905-a749-26c1d6d45b9a.png)
+## ![image](https://user-images.githubusercontent.com/115948325/204409914-f9206c24-4e09-435b-b448-166a5a3cbdaa.png)
+

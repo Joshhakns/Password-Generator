@@ -47,6 +47,7 @@ var general = [0, 1, 2, 3]
 
 
 // Write password to the #password input
+// Allows user to input how long they want their password to be. If select numbers outside range then get a prompt that says "must be between 8 and 128"
 function writePassword(length) {
   var lengthOfPassword = prompt("How long do you want your password to be?")
   if (lengthOfPassword < 8 && lengthOfPassword > 128 ) {
@@ -55,7 +56,7 @@ function writePassword(length) {
   } 
   
 
- 
+ // Add the pop up windows which allows the user to select if they want certain characters in their generated password. 
   var specialCharacters = confirm("Do you want to include special characters?")
   
   var capitalLetters = confirm("Do you want to include capital letters?")
@@ -65,7 +66,7 @@ function writePassword(length) {
   var includeNumbers = confirm ("Do you want to include numbers?")
 
   
-
+ // Set restart equal to true as default so the loop keeps going until a number is found that matches what is selected by user. Then moves on to the next itteration until length of password selected is met. 
   var restart = true ;
   var stored = "";
   if (includeNumbers === false && lowercaseLetters === false && capitalLetters === false && specialCharacters === false) {
@@ -78,6 +79,7 @@ function writePassword(length) {
    restart = true ; 
 while (restart == true) { 
     //This is the code that I need to run repeatedly. Generate one of the four numbers however many times. Generation needs to be inside of for loop. 
+    // set restart to false when selector is found variable is found to be true. so loop would stop. 
     var selector = getRandomInt(4) 
     if (selector === 0) {
       if (lowercaseLetters === true) {
